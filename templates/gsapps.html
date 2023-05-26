@@ -1,0 +1,81 @@
+<html>
+  
+  <head>
+    
+    <title>GS View Applicants</title>
+    
+  </head>
+
+  <body>
+
+    <h1> Welcome, {{ session['uName'] }} </h1>
+
+    <form action="/search" method="POST">
+      <input type = "text" name = "search" placeholder = "Search For Applicant">
+      <input type="submit" name="submit">
+    </form>
+
+    <div class="links">
+      <a href="/profile">Back</a>
+    </div>
+      
+
+    <ul>
+
+      {%for person in applicants%}
+
+        <li>Student ID: {{person.UID}}
+
+          <ul>
+
+            <li>Username: {{person.username}}</li>
+            <li>Status: {{person.applicantStatus}}</li>
+            <li>Update Status: <form action = "/gsapps" method = "POST">
+
+              <select id="status" name="status">
+
+                <option value="Application Materials Missing">Application Materials Missing</option>
+                <option value="Application Recieved and Decision Pending">Application Recieved and Decision Pending</option>
+                {% if person['display'] == True %}
+                <option value="Admission Decision: Accepted">Admission Decision: Accepted</option>
+                {% endif %}
+                <option value="Admission Decision: Reject">Admission Decision: Reject</option>
+
+
+              </select>
+
+              <input type="submit" name="update" value = "update">
+              <input type="hidden" name="id" value="{{person.UID}}">
+              <input type="hidden" name="type" value="update">
+
+            </form></li>
+
+            <li><form action = "/gsapps" method = "POST">
+
+              <input type="submit" name="View Application" value = "View Application">
+              <input type="hidden" name="id" value="{{person.UID}}">
+              <input type="hidden" name="type" value="app">
+
+            </form></li>
+
+            <li><form action = "/gsapps" method = "POST">
+
+              <input type="submit" name="View Reviews" value = "View Reviews">
+              <input type="hidden" name="id" value="{{person.UID}}">
+              <input type="hidden" name="type" value="review">
+
+            </form></li>
+
+          </ul>
+
+        </li>
+
+      {%endfor%}
+
+    </ul>
+
+
+    
+  </body>
+  
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assign Faculty Advisor to Student</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(173, 209, 112);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: rgb(147, 180, 85);
+        }
+        a {
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        button[type="button"] {
+            display: block;
+            width: 200px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: rgb(173, 209, 112);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="button"]:hover {
+            background-color: rgb(147, 180, 85);
+        }
+    </style>
+</head>
+<body>
+    <h1>Assign Faculty Advisor to Student</h1>
+
+    <div id="message">{{ message }}</div><br/>
+
+    <form action="/assign" method="POST">
+        <select name="field_stuId">
+            <option value="" disabled selected>Select Student's ID</option>
+            {% for student in students %}
+                <option value="{{ student['studentid'] }}">{{ student['studentid'] }}</option>
+            {% endfor %}
+        </select>
+        
+        <select name="field_advId">
+            <option value="" disabled selected>Select Advisor's ID</option>
+            {% for faculty in facultys %}
+                <option value="{{ faculty['facultyid'] }}">{{ faculty['facultyid'] }}</option>
+            {% endfor %}
+        </select>        
+        <input type="submit" value="Assign Advisor">
+    </form>
+
+    <a href="/profile">
+        <button type="button">Go back</button>
+    </a>
+</body>
+</html>

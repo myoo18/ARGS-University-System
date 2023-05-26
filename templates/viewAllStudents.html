@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Advisor and Advisees</title>
+</head>
+<body>
+    <h1>View All Students</h1>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>address</th>
+            <th>Email</th>
+            <th>SSN</th>
+        </tr>
+        <tbody>
+            {% for i in results %}
+            <tr>
+                <td>{{ i['uid'] }}</td>
+                <td>{{ i['username'] }}</td>
+                <td>{{ i['password'] }}</td>
+                <td>{{ i['fname'] }}</td>
+                <td>{{ i['lname'] }}</td>
+                <td>{{ i['address'] }}</td>
+                <td>{{ i['email'] }}</td>
+                <td>{{ i['ssn'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="back-link">
+        <a href="/profile">Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Home Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .header_wrap {
+      background-color: rgb(173, 209, 112);
+      padding: 10px;
+      color: #fff;
+      position: relative;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 a {
+      color: #000;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+    }
+    #login {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      background-color: rgb(173, 209, 112);
+      padding: 2px;
+    }
+    #Title {
+      text-align: center;
+    }
+    #logo {
+      position: absolute;
+      left: 30px;
+      top: 15px;
+      height: 70px;
+      width: 70px;
+    }
+    .links {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .links a {
+      display: block;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header_wrap">
+    <div id="header_box"></div>
+    <h1>
+      <a href="/admin" id="Header">Admin</a>
+    </h1>
+    <span id="login">
+      <a>Welcome Admin: {{sfname}}</a>
+    </span>
+  </div>
+  <div class="links">
+    <a href="/adminViewTrans">View Transcripts of all students</a>
+    <a href="/adminViewForm">View Form1's of Student</a>
+    <a href="/register4admin">Create a student or faculty member's account</a>
+    <a href="/viewAdvisedStudent">View Advisors and Advisees</a>
+    <a href="/assign">Assign an Advisor to a Student</a>
+    <a href="/alumni">View Alumni</a>
+    <a href="/logout">Logout</a>
+    <a href="/">home</a>
+  </div>
+</body>
+</html>

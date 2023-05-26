@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "utf-8">
+    <title> All Faculty</title>
+    <link href="/static/style.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class = "navbar">
+      <div class = "logo">
+        <img src = "/static/logo.png" width = "125px"> 
+      </div>
+      <nav>
+        <ul>
+          <li> <a href = "/profile">Back</a> </li>
+        </ul>
+      </nav>
+    </div>
+    <div class = "row">
+        <h1>All {{role}} In The University</h1>
+    </div>
+    <div class = "container">
+        <br>
+        <table class = "content-table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>UID</th>
+                    <th>Email</th>
+                    <th>Address</th>
+
+                </tr>
+            </thead>
+            {%for user in users%}
+                <tr>
+                    <td>{{user["fname"]}}</td>
+                    <td>{{user["lname"]}}</td>
+                    <td>{{user["uid"]}}</td>
+                    <td>{{user["email"]}}</td>
+                    <td>{{user["address"]}}</td>
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
+  </body>
+</html>

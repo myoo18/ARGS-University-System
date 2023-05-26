@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Register Account</title>
+    </head>
+
+    <body>
+
+        <a href="/admin">Return to admin home</a>
+
+        <form action="/register4admin" method="POST">
+            University ID:
+            <input type="text" name="field_uid" required pattern="[0-9]+"><br>
+            Username:
+            <input type="text" name="field_uname" required><br>
+            Password:
+            <input type="text" name="field_pword" required><br>
+            First Name:
+            <input type="text" name="field_fname" required><br>
+            Last Name:
+            <input type="text" name="field_lname" required><br>
+            Address:
+            <input type="text" name="field_address" required><br>
+            Email:
+            <input type="text" name="field_email" required><br>
+            SSN:
+            <input type="text" name="field_ssn" required><br>
+            Program: 
+            <select name="field_role" id="field_role" required>
+                <option value="applicant">applicant</option>
+                <option value="Grad Student Masters">Grad Student Masters</option>
+                <option value="Grad Student Phd">Grad Student Phd</option>
+                <option value="instructor">Instructor</option>
+                <option value="chair">chair</option>
+                <option value="faculty reviewer">faculty reviewer</option>
+                <option value="Grad Secretary">Grad Secretary</option>
+                <option value="admin">admin</option>
+            </select>
+            <input id="register4adminButton" type="submit" value="Register"> 
+        </form>
+        {{message}}
+    </body>
+</html>

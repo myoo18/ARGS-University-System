@@ -1,0 +1,18 @@
+<html>
+  
+    <head>
+    
+    <title>Faculty Reviewer</title>
+    </head>
+
+    <body>
+        <h1> Welcome User {{session['user_id']}}</h1>
+        <a href = "/logout"> Sign Out</a>
+        <li><a href ="/reviewFormFillout">Fillout Review Form</a></li>
+        <h1>Applicants:</h1>
+        {% for n in applicants %}
+            <li><a href ="/viewApp/{{n.applicantID}}"> {{n.applicantID}} </a></li>
+        {% endfor %}
+    </body>
+
+</html>

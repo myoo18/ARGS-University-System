@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title> Welcome Chair of the Applications Committee! </title>
+  </head>
+  <body>
+    <h1> Welcome, {{ session['uName'] }} </h1>
+    <a href = "/logout"> Sign Out</a>
+    {% if msg %}
+    <li class="list-group-item">
+        {{msg}}
+    </li>
+    {% endif %}
+    <li><a href ="/reviewFormFillout">Fillout Review Form</a></li>
+          <h1>Applicants:</h1>
+        
+          {% if nomore %}
+            <li class="list-group-item">
+              {{nomore}}
+          </li>
+          {% else %}
+            {% for n in applicants %}
+                <li>UID : {{n.UID}}    -   USERNAME :  {{n.username}} </li>
+                <a href ="/viewReview/{{n.UID}}">View Review Form</a>
+                <a href ="/viewApp/{{n.UID}}">View Application</a>
+                <li>Status: {{n.applicantStatus}}</li>
+                <li>Update Status: <form action = "/chairUpdateStatus" method = "POST">
+
+                <select id="status" name="status">
+
+                  <option value="Application Materials Missing">Application Materials Missing</option>
+                  <option value="Application Recieved and Decision Pending">Application Recieved and Decision Pending</option>
+                  {% if n['display'] == True %}
+                  <option value="Admission Decision: Accepted">Admission Decision: Accepted</option>
+                  {% endif %}
+                  <option value="Admission Decision: Reject">Admission Decision: Reject</option>
+
+                </select>
+                <input type="submit" name="update" value = "update">
+                <input type="hidden" name="id" value="{{n.UID}}">
+                <input type="hidden" name="status" value="{{n.applicantStatus}}">
+
+              </form></li>
+            {% endfor %}
+          {% endif %}
+  </body>
+</html>

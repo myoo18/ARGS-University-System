@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Register Applicant Account</title>
+    </head>
+
+    <body>
+
+        <a href="/">Return to home page</a>
+        <a href="/login">Already have an account? log in</a>
+
+        <form action="/createAccount" method="POST">
+            University ID:
+            <input type="text" name="field_uid" required pattern="[0-9]+"><br>
+            Username:
+            <input type="text" name="field_uname" required><br>
+            Password:
+            <input type="text" name="field_pword" required><br>
+            First Name:
+            <input type="text" name="field_fname" required><br>
+            Last Name:
+            <input type="text" name="field_lname" required><br>
+            Address:
+            <input type="text" name="field_address" required><br>
+            Email:
+            <input type="text" name="field_email" required><br>
+            SSN:
+            <input type="text" name="field_ssn" required><br>
+
+            <input id="register4adminButton" type="submit" value="Register"> 
+        </form>
+        <script>
+            function validateForm() {
+              var uid = document.getElementById("uid").value;
+              var regex = /^[0-9]+$/;
+              if (!uid.match(regex)) {
+                alert("University ID must contain only digits.");
+                return false;
+              }
+              return true;
+            }
+        </script>
+        {{message}}
+    </body>
+</html>

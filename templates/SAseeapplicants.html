@@ -1,0 +1,46 @@
+<html>
+  
+  <head>
+    
+    <title>Applicant List</title>
+    
+  </head>
+
+  <body>
+
+    <h2> Applicant List </h2> 
+
+    <h3> Welcome {{session['uName']}}</h3>
+
+    <a href = /logout > Sign Out </a>
+
+    <p> View and Edit Users: </p>  
+    
+    <ul>
+
+      {%for person in people%}
+      
+        <li>{{person.username}}
+
+          <ul>
+
+            <li>User ID: {{person.UID}}</li>
+            <li>Username: {{person.username}}</li>
+            <li>Password: {{person.password}}</li>
+            <li>Email: {{person.email}}</li>
+            <li>User Type: {{person.applicantStatus}}</li>
+            <li> <a href = "/SAdeleteApp/{{person.username}}">Remove Applicant</a> </li>
+            
+          </ul>
+        
+        </li>
+
+      <br>
+      
+    {%endfor%}
+  
+    </ul>
+
+  </body>
+  
+</html>

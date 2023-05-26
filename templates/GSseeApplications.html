@@ -1,0 +1,84 @@
+<html>
+  
+  <head>
+    
+    <title>Viewing Applicantion</title>
+    
+  </head>
+
+  <body>
+
+    <p>Viewing Aplication of Student: {{id}}</p>
+
+        <h3>StudentID: {{app.studentID}}</h3>
+        <h3>Degree Seeking: {{app.degreeSeeking}}</h3>
+        <h3>MScheck: {{app.MScheck}}</h3>
+        <h3>MSmajor: {{app.MSmajor}}</h3>
+        <h3>MSyear: {{app.MSyear}}</h3>
+        <h3>MSuniversity: {{app.MSuniversity}}</h3>
+        <h3>MSgpa: {{app.MSgpa}}</h3>
+        <h3>BAcheck: {{app.BAcheck}}</h3>
+        <h3>BAmajor: {{app.BAmajor}}</h3>
+        <h3>BAyear: {{app.BAyear}}</h3>
+        <h3>BAuniversity: {{app.BAuniversity}}</h3>
+        <h3>BAgpa: {{app.BAgpa}}</h3>
+        <h3>GREverbal: {{app.GREverbal}}</h3>
+        <h3>GREquantitative: {{app.GREquantitative}}</h3>
+        <h3>GREyear: {{app.GREyear}}</h3>
+        <h3>GREadvancedScore: {{app.GREadvancedScore}}</h3>
+        <h3>GREadvancedSubject: {{app.GREadvancedSubject}}</h3>
+        <h3>TOEFLscore: {{app.TOEFLscore}}</h3>
+        <h3>TOEFLdata: {{app.TOEFLdata}}</h3>
+        <h3>priorWork: {{app.priorWork}}</h3>
+        <h3>startDate: {{app.startDate}}</h3>
+        <h3>transcriptStatus: {{app.transcriptStatus}}</h3>
+        <form action = "/GSupdateapp" method = "POST">
+
+            <input type="submit" name="Transcript Recieved" value = "Transcript Recieved">
+            <input type="hidden" name="id" value="{{app.studentID}}">
+            <input type="hidden" name="type" value="transcript">
+
+        </form>
+        <h3>r1status: {{app.r1status}}</h3>
+        <form action = "/GSupdateapp" method = "POST">
+
+          <input type="submit" name="Rec Letter 1 Recieved" value = "Rec Letter 1 Recieved">
+          <input type="hidden" name="id" value="{{app.studentID}}">
+          <input type="hidden" name="type" value="r1">
+
+      </form>
+        <h3>r1writer: {{app.r1writer}}</h3>
+        <h3>r1email: {{app.r1email}}</h3>
+        <h3>r1title: {{app.r1title}}</h3>
+        <h3>r1affiliation: {{app.r1affiliation}}</h3>
+        <h3>r1letter: {{app.r1letter}}</h3>
+        <h3>r2status: {{app.r2status}}</h3>
+        <form action = "/GSupdateapp" method = "POST">
+
+          <input type="submit" name="Rec Letter 2 Recieved" value = "Rec Letter 2 Recieved">
+          <input type="hidden" name="id" value="{{app.studentID}}">
+          <input type="hidden" name="type" value="r2">
+
+      </form>
+        <h3>r2writer: {{app.r2writer}}</h3>
+        <h3>r2email: {{app.r2email}}</h3>
+        <h3>r2title: {{app.r2title}}</h3>
+        <h3>r2affiliation: {{app.r2affiliation}}</h3>
+        <h3>r2letter: {{app.r2letter}}</h3>
+        <h3>r3status: {{app.r3status}}</h3>
+        <form action = "/GSupdateapp" method = "POST">
+
+          <input type="submit" name="Rec Letter 3 Recieved" value = "Rec Letter 3 Recieved">
+          <input type="hidden" name="id" value="{{app.studentID}}">
+          <input type="hidden" name="type" value="r3">
+
+      </form>
+        <h3>r3writer: {{app.r3writer}}</h3>
+        <h3>r3email: {{app.r3email}}</h3>
+        <h3>r3title: {{app.r3title}}</h3>
+        <h3>r3affiliation: {{app.r3affiliation}}</h3>
+        <h3>r3letter: {{app.r3letter}}</h3>
+
+  </body>
+
+</html>

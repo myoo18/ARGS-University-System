@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Thesis Submission</title>
+</head>
+<body>
+	<h1>Submit Your Thesis</h1>
+	<form method="POST" action="/writeThesis">
+		<label for="thesis">Thesis:</label><br>
+		<textarea id="thesis" name="thesis" required></textarea><br><br>
+		<input type="submit" value="Submit">
+	</form>
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<a href= "/advPortal"> Go back</a>
+</body>
+</html>

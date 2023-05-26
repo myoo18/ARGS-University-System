@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Advisor View Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select,
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        table {
+            margin: 0 auto;
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>View Student's Form 1</h1>
+    <hr>
+    {% if not students %}
+    <h2>No Form1's to approve</h2>
+    {% endif %}
+
+    {% if students %}
+            <h2>Search your Students</h2>
+            <form method="post" action="/viewForm">
+                <label for="field_id">Student ID:</label>
+                <select name="field_id">
+                    {%for student in students%}
+                    {% if student %}
+                    <option value="{{student['uid']}}">{{student['fname']}} - {{student['lname']}}</option>
+                    {% endif %}
+                    {%endfor%}
+                </select>
+                <input type="submit" value="Search">
+            </form>
+                {% if results %}
+                    <h2>{{ name }}'s Form1</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Course Dept</th>
+                                <th>Course Number</th>
+                                <!-- Add more field names as needed -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in results %}
+                            <tr>
+                                <td>{{ item['courseDept'] }}</td>
+                                <td>{{ item['courseNum'] }}</td>
+                                <!-- Add more fields from the form1 table as needed -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <form method="post" action="/form_approve">
+                        <select name="field_id">
+                            {%for student in students%}
+                            {% if student %}
+                            <option value="{{student['uid']}}">{{student['fname']}} - {{student['lname']}}</option>
+                            {% endif %}
+                            {%endfor%}
+                        </select>
+                        <label for="y/n">Approve form?</label>
+                        <input type="radio" name="y/n" value="yes" id="yes"><label for="yes">Yes</label>
+                        <input type="radio" name="y/n" value="no" id="no"><label for="no">No</label>
+                        <br>
+                        <button type="submit">Submit</button>
+                    </form>
+                {% endif %}
+    {% endif %}
+    <div class="back-link">
+        <a href="/profile">back</a>
+    </div>
+</body>
+
+</html>

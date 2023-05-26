@@ -1,0 +1,89 @@
+<html>
+<head>
+    <title>View Thesis - Faculty Advisor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        select, button {
+            padding: 8px;
+        }
+        button[type="submit"] {
+            background-color: rgb(173, 209, 112);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(173, 209, 112);
+            color: white;
+        }
+        th:first-child, td:first-child {
+            width: 50%;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 50%;
+        }
+        .hidden-form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .hidden-form input[type="hidden"], .hidden-form select, .hidden-form button {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>View Thesis</h1>
+    <form action="/thesis" method="post">
+        <select name="field_id">
+            {% for student in students %}
+            <option value="{{ student['uid'] }}">{{ student['fname'] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">View</button>
+    </form>
+    {% if thesis %}
+    <h2>{{ thesis[0]['thesis'] }}</h2>
+        {% if decision is none %}
+        <p>Current Status: Under Review</p>
+        {% elif decision == 1 %}
+        <p>Current Status: Approved</p>
+        {% else %}
+        <p>Current Status: Disapproved</p>
+        {% endif %}
+    <div class="hidden-form">
+        <form action="/thesis_approve" method="post">
+            <input type="hidden" name="uid" value="{{ thesis[0]['uid'] }}">
+            <select name="y/n">
+                <option value="yes">Approve</option>
+                <option value="ur">Under Review</option>
+                <option value="no">Reject</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% endif %}
+    <div class="back-link">
+        <a href="/adv">Go Back to Advisor Home</a>
+    </div>
+</body>
+</html>

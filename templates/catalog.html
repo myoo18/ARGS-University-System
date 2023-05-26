@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "utf-8">
+    <title>Catalog</title>
+    <link href="/static/style.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class = "navbar">
+      <div class = "logo">
+        <img src = "/static/logo.png" width = "125px"> 
+      </div>
+      {% if session['role'] == "student"%}
+      <nav>
+        <ul>
+          <li> <a href = "/catalog">Catalog</a> </li>
+          <li> <a href = "/schedule">Schedule</a> </li>
+          <li> <a href = "/registration">Registration</a> </li>
+          <li> <a href = "/profile">Student Page</a> </li>
+        </ul>
+      </nav>
+      {%else%}
+      <nav>
+        <ul>
+          <li> <a href = "/catalog">Catalog</a> </li>
+          <li> <a href = "/grade_course">Courses</a> </li>
+          <li> <a href = "/profile">Back</a> </li>
+        </ul>
+      </nav>
+      {%endif%}
+    </div>
+    <div class = "row">
+        <h1>University Course Catalog</h1>
+    </div>
+
+    <div class = "container">
+        <br>
+        <table class = "content-table">
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Course Number</th>
+                    <th>Title</th>
+                    <th>Credit Hours</th>
+                    <th>Pre-requisite 1</th>
+                    <th>Pre-requisite 2</th>
+                </tr>
+            </thead>
+            {%for course in catalog%}
+                <tr>
+                    <td>{{course["dept"]}}</td>
+                    <td>{{course['courseNumber']}}</td>
+                    <td>{{course["title"]}}</td>
+                    <td>{{course["credits"]}}</td>
+                    {%for p in prerequisite[course["cid"]]%}
+                      <td>
+                        {{p}}
+                      </td>
+                    {%endfor%}
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
+  </body>
+</html>

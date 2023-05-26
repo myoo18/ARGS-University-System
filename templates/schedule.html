@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "utf-8">
+    <title> Registration </title>
+    <link href="/static/style.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class = "navbar">
+      <div class = "logo">
+        <img src = "/static/logo.png" width = "125px"> 
+      </div>
+      <nav>
+        <ul>
+          <li> <a href = "/catalog">Catalog</a> </li>
+          <li> <a href = "/schedule">Schedule</a> </li>
+          <li> <a href = "/registration">Registration</a> </li>
+          <li> <a href = "/profile">Student Page</a> </li>
+        </ul>
+      </nav>
+    </div>
+      <div class = "row">
+        <h1>{{current_semester}} {{current_year}} Schedule</h1>
+      </div>
+      <div class = "row">
+        <form method="POST" action="/semester" class = "row">
+          <select class="arrow" name="semester">
+              <option value="" selected="selected" hidden="hidden">Choose Semester</option>
+              {%for sem in semester%}
+                <option value="{{sem['semester']}}">{{sem['semester']}}</option>
+              {%endfor%}
+          </select>
+          <select class="arrow" name="year">
+            <option value="" selected="selected" hidden="hidden">Choose Year</option>
+            {%for year in years%}
+              <option value="{{year['year']}}">{{year['year']}}</option>
+            {%endfor%}
+        </select>
+          <input class="button" type="submit" value="Submit">
+        </form>
+      </div>
+    <div class = "container">
+        <br>
+        <table class = "content-table">
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Department</th>
+                    <th>Course Number</th>
+                    <th>Title</th>
+                    <th>Credit Hours</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    {%if current_year == "2023"%}
+                        {%if current_semester == "Spring"%}
+                            <th>Delete</th>
+                        {%endif%}
+                    {%endif%}
+                </tr>
+            </thead>
+            {%for course in courses%}
+                <tr>
+                    <td>{{course["cid"]}}</td>
+                    <td>{{course["dept"]}}</td>
+                    <td>{{course["courseNumber"]}}</td>
+                    <td>{{course["title"]}}</td>
+                    <td>{{course["credits"]}}</td>
+                    <td>{{course["day"]}}</td>
+                    <td>{{course["course_start"]}} - {{course["course_end"]}}</td>
+                    {%if current_year == "2023"%}
+                        {%if current_semester == "Spring"%}
+                            <td>
+                                <form action = "/remove_course" method = "POST">
+                                    <input class="button" type="submit" value="Remove Course"/>
+                                    <input type="hidden" name="course_id" value="{{course['cid']}}"/>
+                                </form>
+                            </td>
+                        {%endif%}
+                    {%endif%}
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
+  </body>
+</html>

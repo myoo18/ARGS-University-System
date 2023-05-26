@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Advisor and Advisees</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: rgb(173, 209, 112);
+            color: white;
+        }
+        th:first-child, td:first-child {
+            width: 20%;
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 30%;
+        }
+        th:nth-child(3), td:nth-child(3) {
+            width: 30%;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+        }
+        .back-link a {
+            color: #000;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    {% if seshrole %}
+    <h1>View All Students and Their Advisor</h1>
+    {% else %}
+    <h1>View Students You Are Currently Advising</h1>
+    {% endif %}
+    <br>
+    <br>
+    <table>
+        <tr>
+            <th>Advisor ID</th>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        <tbody>
+            {% for i in results %}
+            <tr>
+                {% if seshrole %}
+                <td>{{ i['advisorid'] }}</td>
+                {% else %}
+                <td>{{ user_id }}</td>
+                {% endif %}
+                <td>{{ i['uid'] }}</td>
+                <td>{{ i['fname'] }}</td>
+                <td>{{ i['lname'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="back-link">
+        <a href="/profile">Go Back</a>
+    </div>
+</body>
+</html>

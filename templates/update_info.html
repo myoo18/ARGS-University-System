@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/style-login.css" rel="stylesheet" type="text/css" />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+    <title>Document</title>
+</head>
+<body>
+
+<div class="formbg-outer">
+    <div class="formbg">
+      <div class="formbg-inner padding-horizontal--48">
+        <span class="padding-bottom--15">Update Account Information</span>
+        <form id="stripe-login" method="POST">
+
+          <div class="field padding-bottom--24">
+            <label for="fname">UID</label>
+            <input type="text" name="field_uid">
+          </div>
+
+          <div class="field padding-bottom--24">
+            <label for="fname">First Name</label>
+            <input type="text" name="field_fname">
+          </div>
+
+          <div class="field padding-bottom--24">
+              <label for="lname">Last Name</label>
+              <input type="text" name="field_lname">
+          </div>
+
+          <div class="field padding-bottom--24">
+              <label for="email">Email</label>
+              <input type="email" name="field_email">
+          </div>
+
+          <div class="field padding-bottom--24">
+              <label for="address">Address</label>
+              <input type="text" name="field_addr">
+          </div>
+         
+          {% if session['user_role'] == 'sys-admistrator' %}
+        <label for="field4"><span>Role</span>
+          <select name="role" class="select-field">
+              <option name="student" value="student">student</option>
+              <option name="faculty" value="faculty">faculty</option>
+              <option name="gs" value="GS">graduate secretary</option>
+          </select>
+      </label>
+        {%endif%}
+          
+          <div class="field padding-bottom--24">
+            <input type="submit" name="submit" value="Submit">
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
