@@ -1,3 +1,4 @@
+Read All requirements and the Final Report to get a better understanding of each system and how they work together to make a complete and seamless website
 
 User log in info:
 
